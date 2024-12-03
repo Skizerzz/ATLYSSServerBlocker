@@ -26,7 +26,10 @@ namespace BlockServersByHost {
         }
 
         public static void AddBlockedName(string serverName) {
-            if (string.IsNullOrWhiteSpace(serverName)) return;
+            if (serverName == null) {
+                Logger.LogError("Server name was null");
+                return;
+            }
             _blockedServerNames.Add(serverName);
             Logger.LogMessage($"{serverName} added to blocked servers list.");
         }
